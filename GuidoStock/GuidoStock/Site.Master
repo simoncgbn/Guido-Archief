@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GuidoStock.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <%--    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />--%>
+    <link href="Content/select2.min.css" rel="stylesheet" />
+    <link href="Content/menu.css" rel="stylesheet"/>    
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+
+
+
+</head>
+<body>
+    <form class="form-wrapper" runat="server">
+        <asp:ScriptManager runat="server" EnablePageMethods="True" EnablePartialRendering="true">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+
+        <header class="cd-main-header">
+		<div class="cd-title"><h3>GUIDO STOCK</h3></div>
+		
+		<div class="cd-page-title">
+			<h2><%= Page.Title %></h2>
+		</div> <!-- cd-search -->
+
+		<a href="#0" class="cd-nav-trigger"><span></span></a>
+
+		
+	</header> <!-- .cd-main-header -->
+
+	<main class="cd-main-content">
+		<nav class="cd-side-nav is-fixed">
+			<ul>				
+                <li class="cd-label">Scannen</li>
+
+				<li class="action-btn"><a runat="server" href="~/Scannen/Overzicht">Scannen</a></li>
+
+
+			</ul>
+
+			<ul>
+				<li class="cd-label">Beheer</li>
+				<li class="dashboard">
+					<a runat="server" href="~/Dashboard/Overzicht"> <i class="menuIcon glyphicon glyphicon-home"></i> <span>Dashboard</span></a>
+				</li>
+				<li class="stock">
+					<a runat="server" href="~/Stock/Overzicht"><i class="menuIcon glyphicon glyphicon-list"></i><Span>Stock</Span></a>
+
+				</li>
+
+				<li class="events">
+					<a runat="server" href="~/Event/Overzicht"><i class="menuIcon glyphicon glyphicon-calendar"></i><span>Events</span></a>
+
+				</li>
+
+                <li class="orders">
+					<a runat="server" href="~/Order/Overzicht"><i class="menuIcon glyphicon glyphicon-shopping-cart"></i><span>Orders</span></a>
+
+				</li>
+
+                <!--<li class="rapporten">
+					<a runat="server" href="~/Rapporten"><i class="menuIcon glyphicon glyphicon-file"></i><span>Rapporten</span></a>
+
+				</li> -->
+
+                 <li class="gebruikers">
+					<a runat="server" href="~/Beheer/Overzicht"><i class="menuIcon glyphicon glyphicon-user"></i><span>Beheer</span></a>
+
+				</li>
+			</ul>
+            
+            <ul>
+                <li class="cd-label">Account</li>
+			   
+			    <li class="handleiding">
+			        <a runat="server" href="~/HandleidingGuidoStock.pdf"><span>Handleiding</span></a>
+
+			    </li>	
+
+				<li class=""><asp:LinkButton runat="server" OnClick="OnClick">Uitloggen</asp:LinkButton></li>
+			</ul>
+            
+
+		</nav>
+
+		<div class="content-wrapper">
+             <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+                        </asp:ContentPlaceHolder>
+		</div> <!-- .content-wrapper -->
+	</main>
+                <!-- /main -->
+
+
+                
+
+
+
+    </form>
+
+    
+    <script src="https://unpkg.com/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.4.4/l10n/nl.js"></script>
+    <script src="../Scripts/jquery.tablesorter.min.js"></script>
+    <script src="../Scripts/jquery.browser.min.js"></script>
+    <script src="../Scripts/jquery.tablesorter.pager.js"></script>
+    
+    <script src="../Scripts/jquery.menu-aim.js"></script>
+    <script src="../Scripts/jquery.bootstrap-touchspin.js"></script>
+    <script src="../Scripts/menu.js"></script>
+
+
+
+
+
+</body>
+</html>
